@@ -39,54 +39,8 @@ export const useSocket = () => {
 
 export const SocketProvider: React.FC<SocketProviderProps> = ({ children }) => {
   const [socket, setSocket] = React.useState<Socket>();
-  const [genMessages, setGenMessages] = React.useState<string[]>([
-    "name",
-    "cool",
-    "name",
-    "cool",
-    "name",
-    "cool",
-    "name",
-    "cool",
-    "name",
-    "cool",
-    "name",
-    "cool",
-    "name",
-    "cool",
-    "name",
-    "cool",
-    "name",
-    "cool",
-    "name",
-    "cool",
-    "name",
-    "cool",
-  ]);
-  const [roomMessages, setRoomMessages] = React.useState<string[]>([
-    "name",
-    "cool",
-    "name",
-    "cool",
-    "name",
-    "cool",
-    "name",
-    "cool",
-    "name",
-    "cool",
-    "name",
-    "cool",
-    "name",
-    "cool",
-    "name",
-    "cool",
-    "name",
-    "cool",
-    "name",
-    "cool",
-    "name",
-    "cool",
-  ]);
+  const [genMessages, setGenMessages] = React.useState<string[]>([]);
+  const [roomMessages, setRoomMessages] = React.useState<string[]>([]);
 
   React.useEffect(() => {
     const _socket = io("http://localhost:8000");

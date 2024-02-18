@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useEffect, useState, useCallback } from "react";
+import { useState } from "react";
 import { Rings } from "react-loader-spinner";
 import {
   Card,
@@ -19,7 +19,7 @@ import { useRoom } from "../../context/RoomContext";
 
 const Room = () => {
   const router = useRouter();
-  const { sendMessage, joinRoom } = useSocket();
+  const { joinRoom } = useSocket();
   const { name, setName, room, setRoom }: any = useRoom();
 
   const [loading, setLoading] = useState(false);

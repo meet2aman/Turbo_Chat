@@ -7,9 +7,9 @@ import {
 } from "../../components/ui/avatar";
 import { Separator } from "../../components/ui/separator";
 import { useSocket } from "../../context/SocketProvider";
-import { nanoid } from "nanoid";
+
 const page = () => {
-  const { socket, sendGenMessage, genMessages } = useSocket();
+  const { sendGenMessage, genMessages } = useSocket();
   const [message, setMessage] = React.useState("");
 
   const handleSubmit = (e: any) => {
