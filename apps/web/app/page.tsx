@@ -45,7 +45,7 @@ export default function Page(): JSX.Element {
           />
         </div>
       </div>
-      <TitleBar />
+
       <div className={styles.hero}>
         <div className={styles.heroContent}>
           <div className={styles.logos}>
@@ -77,8 +77,13 @@ export default function Page(): JSX.Element {
         </div>
       </div>
 
-      <div className="absolute top-[50%]">
-        <Room />
+      <div className="absolute max-md:-top-20 max-md:scale-90">
+        <TitleBar />
+        <div className="flex justify-center">
+          <div className="absolute">
+            <Room />
+          </div>
+        </div>
       </div>
     </main>
   );

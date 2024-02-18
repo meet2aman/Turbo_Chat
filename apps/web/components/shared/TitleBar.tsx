@@ -1,8 +1,8 @@
 import React from "react";
-
+import Link from "next/link";
 const TitleBar = () => {
   return (
-    <div className="px-8 py-32 max-md:text-md">
+    <div className="lg:px-8 sm:px-6 xs max-md:pt-40 max-md:pb-20 max-sm:pb-10 md:py-32 max-md:text-md">
       <div className="grid gap-8 items-start justify-center">
         <div className="relative group">
           <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt" />
@@ -27,9 +27,11 @@ const TitleBar = () => {
                 Welcome To Roomies.
               </span>
             </span>
-            <span className="pl-6 text-indigo-400 group-hover:text-gray-100 transition duration-200">
-              See what's new &rarr;
-            </span>
+            <Link href={`/gen-room`}>
+              <span className="pl-6 text-indigo-400 group-hover:text-gray-100 transition duration-200">
+                Enter In General Room &rarr;
+              </span>
+            </Link>
           </button>
         </div>
       </div>

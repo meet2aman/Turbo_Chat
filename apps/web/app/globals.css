@@ -73,6 +73,10 @@
   body {
     @apply bg-background text-foreground;
   }
+  .no-focus {
+  @apply focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
+}
+
 }
 
 :root {
@@ -109,6 +113,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  max-height: 100vh;
 }
 
 body {
@@ -125,3 +130,4 @@ a {
   color: inherit;
   text-decoration: none;
 }
+

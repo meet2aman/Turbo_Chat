@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useEffect, useState, useCallback } from "react";
+import { Rings } from "react-loader-spinner";
 import {
   Card,
   CardContent,
@@ -12,13 +13,33 @@ import {
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
+import { useSocket } from "../../context/SocketProvider";
+import { useRouter } from "next/navigation";
+import { useRoom } from "../../context/RoomContext";
 
 const Room = () => {
-  const [name, setName] = useState("");
-  const [room, setRoom] = useState("");
+  const router = useRouter();
+  const { sendMessage, joinRoom } = useSocket();
+  const { name, setName, room, setRoom }: any = useRoom();
+
+  const [loading, setLoading] = useState(false);
+
+  const handleJoin = () => {
+    if (name === "" && room === "") {
+      return alert("Please enter name and roomid.");
+    }
+    setLoading(true);
+    joinRoom({ name, room });
+
+    setTimeout(() => {
+      router.push(`/roomId_${room}`);
+      setLoading(false);
+    }, 3000);
+  };
+
   return (
     <div className="group">
-      <div className="absolute opacity-75 group-hover:opacity-100  transition duration-1000 group-hover:duration-200 -inset-5 rounded-lg animate-tilt bg-gradient-to-r from-yellow-600 via-purple-600 to-red-600 blur" />
+      <div className="absolute opacity-75 group-hover:opacity-100  transition duration-1000 group-hover:duration-200 -inset-5 rounded-lg  bg-gradient-to-r from-yellow-600 via-purple-600 to-red-600 blur" />
       <Card className="w-[350px] bg-black border-none text-white scale-110">
         <CardHeader>
           <CardTitle>Create Room</CardTitle>
@@ -53,8 +74,26 @@ const Room = () => {
           </form>
         </CardContent>
         <CardFooter className="flex justify-center">
-          <Button className="hover:bg-white transition-all hover:text-green-600">
-            Deploy
+          <Button
+            onClick={handleJoin}
+            className="hover:bg-white transition-all hover:text-green-600"
+          >
+            <span className="mr-2">
+              {loading && (
+                <>
+                  <Rings
+                    visible={true}
+                    height="35"
+                    width="35"
+                    color="#4fa94d"
+                    ariaLabel="rings-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                  />
+                </>
+              )}
+            </span>
+            {loading ? "Deploying" : "Deploy"}
           </Button>
         </CardFooter>
       </Card>
